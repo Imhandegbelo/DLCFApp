@@ -1,4 +1,5 @@
-import jwt from 'jsonwebtoken';
+// const jwt = require('express-jwt');
+const {expressjwt: expressJwt} = require('express-jwt')
 
 const getTokenFromHeaders = (req) => {
   const { headers: { authorization } } = req;
@@ -10,17 +11,19 @@ const getTokenFromHeaders = (req) => {
 };
 
 const auth = {
-  required: jwt({
+  required: expressJwt({
     secret: 'secret',
+    algorithms: ["HS256"],
     userProperty: 'payload',
     getToken: getTokenFromHeaders,
   }),
-  optional: jwt({
+  optional: expressJwt({
     secret: 'secret',
+    algorithms: ["HS256"],
     userProperty: 'payload',
     getToken: getTokenFromHeaders,
     credentialsRequired: false,
   }),
 };
 
-export default auth;
+module.exports = auth;

@@ -1,44 +1,44 @@
-import mongoose from "mongoose";
-import uuid from "uuid/v4";
+const mongoose = require("mongoose");
+const uuid = require("uuid");
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
-const feedbackSchema = new Schema({
+const feedbackSchema = new mongoose.Schema({
   sid: {
-    type: Schema.Types.String,
+    type: String,
     required: true,
     default: uuid,
-    unique: true
+    unique: true,
   },
   phoneNumber: {
-    type: Schema.Types.String,
+    type: String,
     // required: true,
     index: true,
     // unique: true
   },
   message: {
-    type: Schema.Types.String,
+    type: String,
   },
   transport: {
-    type: Schema.Types.String,
+    type: String,
   },
   like: {
-    type: Schema.Types.String,
+    type: String,
   },
   experience: {
-    type: Schema.Types.String
+    type: String,
   },
   improvements: {
-    type: Schema.Types.String,
+    type: String,
   },
   category: {
-    type: Schema.Types.String,
+    type: String,
   },
   created: {
     type: Date,
     required: true,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-export default mongoose.model("Feedbacks", feedbackSchema);
+module.exports = mongoose.model("Feedbacks", feedbackSchema);

@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
-import uuid from "uuid/v4";
+const mongoose = require("mongoose");
+const uuid = require("uuid");
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
-const fileSchema = new Schema({
+const fileSchema = new mongoose.Schema({
   sid: {
     type: String,
     required: true,
@@ -28,4 +28,4 @@ const fileSchema = new Schema({
   },
 });
 
-export default mongoose.model("File", fileSchema);
+module.exports = mongoose.model("File", fileSchema);

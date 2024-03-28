@@ -1,37 +1,37 @@
-import mongoose from "mongoose";
-import uuid from "uuid/v4";
+const mongoose = require("mongoose");
+const uuid = require("uuid");
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
-const testimonySchema = new Schema({
+const testimonySchema = new mongoose.Schema({
   sid: {
-    type: Schema.Types.String,
+    type: String,
     required: true,
     default: uuid,
-    unique: true
+    unique: true,
   },
   phoneNumber: {
-    type: Schema.Types.String,
+    type: String,
     required: true,
     // unique: true
   },
   fullName: {
-    type: Schema.Types.String,
+    type: String,
     required: true,
   },
   testimony: {
-    type: Schema.Types.String,
+    type: String,
     required: true,
   },
   category: {
-    type: Schema.Types.String,
+    type: String,
     required: true,
   },
-created: {
+  created: {
     type: Date,
     required: true,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-export default mongoose.model("Testimonies", testimonySchema);
+module.exports = mongoose.model("Testimonies", testimonySchema);

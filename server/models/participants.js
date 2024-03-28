@@ -1,76 +1,75 @@
-import mongoose from "mongoose";
-import uuid from "uuid/v4";
+const mongoose = require("mongoose");
+const uuid = require("uuid");
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
-const participantSchema = new Schema({
+const participantSchema = new mongoose.Schema({
   sid: {
-    type: Schema.Types.String,
+    type: String,
     required: true,
     default: uuid,
     unique: true,
     index: true,
   },
   fullName: {
-    type: Schema.Types.String,
+    type: String,
     // required: true
   },
   phoneNumber: {
-    type: Schema.Types.String,
+    type: String,
     // required: true,
   },
   whatsAppNumber: {
-    type: Schema.Types.String,
+    type: String,
   },
   gender: {
-    type: Schema.Types.String,
+    type: String,
     // required: true
   },
   address: {
-    type: Schema.Types.String,
+    type: String,
     // required: true
   },
   group: {
-    type: Schema.Types.String
+    type: String,
   },
   email: {
-    type: Schema.Types.String,
+    type: String,
   },
   status: {
-    type: Schema.Types.String,
+    type: String,
     // required: true
   },
   denomination: {
-    type: Schema.Types.String,
+    type: String,
     // required: true
   },
   institution: {
-    type: Schema.Types.String
+    type: String,
   },
   course: {
-    type: Schema.Types.String
+    type: String,
   },
   ageGroup: {
-    type: Schema.Types.String,
+    type: String,
     // required: true
   },
   category: {
-    type: Schema.Types.String,
+    type: String,
     // required: true
   },
   region: {
-    type: Schema.Types.String
+    type: String,
   },
   created: {
     type: Date,
     required: true,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
-
 
 const Participant = mongoose.model("Participant", participantSchema);
 
-Participant.syncIndexes()
+Participant.syncIndexes();
 
-export default Participant
+module.exports = Participant;

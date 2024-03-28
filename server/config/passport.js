@@ -1,6 +1,6 @@
-import { model } from 'mongoose';
-import { use } from 'passport';
-import LocalStrategy from 'passport-local';
+const { model } = require ('mongoose');
+const { use } = require ('passport');
+const LocalStrategy = require('passport-local');
 
 const Users = model('Users');
 
@@ -17,3 +17,7 @@ use(new LocalStrategy({
       return done(null, user);
     }).catch(done);
 }));
+
+// passport.use(new LocalStrategy(function verify(username, password, cb) {
+//   // ...
+// });
